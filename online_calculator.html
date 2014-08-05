@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="calculator.css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("button").click(function() {
+                    var valueClicked = this.id.toString().substring("btn_".length);
+                    if (valueClicked == "clear") {
+                        $("#input_display").val(0);
+                    }
+                    else if (valueClicked >= 0 && valueClicked <= 9) {// for int entering part
+                        if ($("#input_display").val() == 0) {
+                            $("#input_display").val(valueClicked);
+                        }
+                        else {
+                            $("#input_display").val($("#input_display").val() + valueClicked);
+                        }
+                    }
+                    else if (valueClicked == "dot") {// for float entering part
+                        $("#input_display").val($("#input_display").val() + ".");
+                    }
+                    else if (valueClicked == "open") {// for open parenthesis
+                        $("#input_display").val($("#input_display").val() + "(");
+                    }
+                    else if (valueClicked == "close") {// for close parenthesis
+                        $("#input_display").val($("#input_display").val() + ")");
+                    }
+                    else if (valueClicked == "plus") {
+                        $("#input_display").val($("#input_display").val() + "+");
+                    }
+                    else if (valueClicked == "minus") {
+                        $("#input_display").val($("#input_display").val() + "-");
+                    }
+                    else if (valueClicked == "times") {
+                        $("#input_display").val($("#input_display").val() + "*");
+                    }
+                    else if (valueClicked == "divide") {
+                        $("#input_display").val($("#input_display").val() + "/");
+                    }
+                    else if (valueClicked == "equal") {
+                        $("#input_display").val(eval($("#input_display").val()));
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div>Online calculator</div>
+        <table>
+            <tr><td colspan="5"><input type="text" id="input_display" align="right" value="0" readonly></td></tr>
+            <tr><td colspan="2"><button type="button"  id="btn_clear">Clear</button></td><td><button type="button" id="btn_equal">=</button></td><td><button type="button" id="btn_open">(</button></td><td><button type="button"  id="btn_close">)</button></td></tr>
+            <tr><td><button type="button" id="btn_times">*</button></td><td><button type="button" id="btn_divide">/</button></td><td><button type="button" id="btn_plus">+</button></td><td><button type="button" id="btn_minus">-</button></td><td><button type="button" id="btn_dot">.</button></td></tr>
+            <tr><td><button type="button" id="btn_1">1</button></td><td><button type="button" id="btn_2">2</button></td><td><button type="button"  id="btn_3">3</button></td><td><button type="button"  id="btn_4">4</button></td><td><button type="button"  id="btn_5">5</button></td></tr>
+            <tr><td><button type="button" id="btn_6">6</button></td><td><button type="button" id="btn_7">7</button></td><td><button type="button"  id="btn_8">8</button></td><td><button type="button"  id="btn_9">9</button></td><td><button type="button"  id="btn_0">0</button></td></tr>
+        </table>
+    </body>
+</html>
